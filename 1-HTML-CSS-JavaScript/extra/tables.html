@@ -16,6 +16,10 @@
         tr:first-of-type {
             font-weight: bold;
         }
+        .my-table {
+            border: 1px solid black;
+            padding: 12px;
+        }
     </style>
 </head>
 <body>
@@ -43,5 +47,56 @@
         </tr>
 
     </table>
+    <!-- testing out thead and tbody -->
+
+    <!-- The state of California's motto is "Eureka" and the state flower is the California poppy.
+         The state of Rhode Island's motto is "Forward" and the state flower is the violet. -->
+    <table>
+        <thead>
+            <th>Name</th>
+            <th>phone number</th>
+            <th>email</th>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>Austin</td>
+                <td>234234234</td>
+                <td>austin@gmail</td>
+            </tr>
+            <tr>
+                <td colspan="3">ljklkj</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <!-- from codepen fork -->
+    <br><br><br>
+    <table  class="my-table">
+        <thead>
+            <th>State</th>
+            <th>Motto</th>
+            <th>Flower</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Alaska</td>
+                <td>North to the future</td>
+                <td>forget-me-not</td>
+            </tr>
+            <tr>
+                <td>California</td>
+                <td>Eureka</td>
+                <td>Poppy</td>
+            </tr>
+            <tr>
+                <td>Rhode Island</td>
+                <td>Forward</td>
+                <td>Violet</td>
+            </tr>
+        </tbody>
+    </table>
+
 </body>
 </html>
