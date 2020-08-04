@@ -10,10 +10,41 @@
         <form action="https://learn.nucamp.co/show_everything.php" method="post">
             <fieldset>
                 <legend>Your information</legend>
+                <div>
+                    <label for="firstName">First Name:</label> 
+                    <input type="text" id="firstName" name="firstName" placeholder="Your First Name"/>
+                </div>
+                <div>
+                    <label for="lastName">Last Name:</label>
+                    <input type="text" id="lastName" name="lastName" placeholder="Your Last Name">
+                </div>
+                <div>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" placeholder="Your email">
+                </div>
             </fieldset>
             <fieldset>
                 <legend>Survery questions</legend>
+                <div>
+                    Favorite sport:
+                    <input type="radio" id="baseball" name="sport" value="baseball"/>
+                    <label for="baseball">baseball</label>
+
+                    <input type="radio" id="rugby" name="sport" value="rugby"/> 
+                    <label for="rugby">rugby</label>
+
+                    <input type="radio" id="snowboarding" name="sport" value="snowboarding"/>
+                    <label for="snowboarding">snowboarding</label>
+                </div>
+
+                <div>
+                    Your pets:
+                    <input type="checkbox" name="pets" value="cat" /> Cat
+                    <input type="checkbox" name="pets" value="dog" /> Dog
+                    <input type="checkbox" name="pets" value="iguana" /> Iguana
+                </div>
             </fieldset>
+            <input type="submit">
         </form>
     </body>
 </html>
