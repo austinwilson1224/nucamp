@@ -1,5 +1,5 @@
 body {
-    background: #b4eeca;
+    background: cornflowerblue;
     font-family: Tahoma, Arial, sans-serif;
 }
 
@@ -10,16 +10,20 @@ section {
 }
 
 h1 {
-    color: blueviolet;
+    color: lime;
     font: 32px Garamond, Helvetica, serif;
+    text-align: center;
 }
 
 table {
     width: 50%;
+    text-align: center;
 }
 
 thead {
-    text-align: left;
+    text-align: center;
+    padding: 10px 10px 10px 10px;
+    align-content: center;
 }
 
 label {
