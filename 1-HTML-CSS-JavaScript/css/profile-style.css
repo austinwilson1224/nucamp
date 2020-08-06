@@ -1,0 +1,32 @@
+* {
+    margin-left: 0em;
+    text-align: center;
+    align-content: center;
+}
+body {
+    background-color: slategrey;
+
+}
+nav {
+    position: fixed;
+    background-color: slategrey;
+    top: 0;
+    width: 100%;
+    color: white;
+    font-size: 20px;
+    text-align: center;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    margin-right: 20px;
+    text-align: right;
+    
+}
+a:link {
+    text-decoration: none;
+}
+li {
+    list-style-type: none;
+}
