@@ -1,0 +1,38 @@
+body {
+    background: #b4eeca;
+    font-family: Tahoma, Arial, sans-serif;
+}
+
+section {
+    border: 1px solid black;
+    padding: 10px 10px 10px 10px;
+    display: block;
+}
+
+h1 {
+    color: blueviolet;
+    font: 32px Garamond, Helvetica, serif;
+}
+
+table {
+    width: 50%;
+}
+
+thead {
+    text-align: left;
+}
+
+label {
+    display: block;
+}
+
+#submit-btn {
+    display: block;
+}
+table,th,td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+tr {
+    border: 1px solid black;
+}

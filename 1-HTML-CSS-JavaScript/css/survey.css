@@ -1,0 +1,22 @@
+h1 {
+    text-align: center;
+}
+.survey-form {
+    width: 80%;
+    margin: auto;
+}
+
+#submit-btn {
+    background-color: rgb(83, 104, 172); 
+    color: white;
+}
+
+p {
+    text-align: center;
+    margin: auto;
+    width: 80%;
+}
+
+.red-text {
+    color: red;
+}
