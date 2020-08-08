@@ -10,19 +10,96 @@
         <!-- first fieldset -->
         <fieldset>
             <legend>Your face</legend>
-            <div>Upload Your Image: <input type="file" name="image" placeholder="No file chosen"/></div>
-            Image Preview:
+            <div><label for="avatar">Upload Your Image: <input type="file" id="avatar" name="avatar"></label></div>
+
+            <!-- other stuff -->
+            <!-- <div>Upload Your Image: <input type="file" name="image" placeholder="No file chosen"/></div> -->
+            Image Preview: <img id="preview" width="500">
         </fieldset>
 
         <!-- details -->
         <fieldset>
             <legend>Your Details</legend>
-            <div>Name: <input type="text" name="name" id="name"></div>
+
+            <!-- 1. name -->
+            <div>
+                <label for="name">Name:</label>
+                <input type="text" name="name" id="name" placeholder="Your full name" required />
+            </div>
+
+            <!-- 2. gender -->
+            <div>
+                <label for="gender">Gender:</label>
+                <!-- name has to be the same for the radio buttons to be mutually exclusive -->
+                <input type="radio" name="gender" value="woman" id="woman"> <label for="Woman">Woman</label>
+                <input type="radio" name="gender" value="man" id="man"> <label for="man">Man</label>
+                <input type="radio" name="gender" value="other" id="other"> <label for="other">Other</label>
+
+            </div>
+
+            <!-- 3. age -->
+            <div>
+                <label for="age">Age:</label>
+                <input type="number" name="age" id="age">
+            </div>
+
+            <!-- 4. date of birth -->
+            <div class="dob">
+                <label for="dob">Date of Birth:</label> 
+                <input type="date" name="dob" id="dob" placeholder="mm/dd/yyyy">
+            </div>
+
+
+            <!-- 5. favorite color -->
+            <div class="favorite-color">
+                <label for="color">Favorite Color:</label>
+                <input type="color" name="color" id="color">
+            </div>
+
+            <!-- 6. country -->
+            <div class="country">
+                <label for="country">Country:</label>
+                <select name="country" id="country">
+                    <option value="">Choose a country</option>
+                    <option value="brazil">Brazil</option>
+                    <option value="france">France</option>
+                    <option value="japan">Japan</option>
+                    <option value="libya">Libya</option>
+                    <option value="us">U.S.A.</option>
+                </select>
+            </div>
+
+            <!-- 7. Salary -->
+            <div class="salary">
+                <label for="salary">Salary:</label>
+                <span class="range-caption">Poor</span>
+                <input type="range" id="salary" name="salary" min="0" max="100" value="50">
+                <span class="range-caption">Rich</span>
+            </div>
+
+
         </fieldset>
 
         <!-- your contact information -->
         <fieldset>
             <legend>Your Contact Infomation</legend>
+
+            <!-- 1. email -->
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <!-- 2. Phone -->
+            <div>
+                <label for="phone">Phone:</label>
+                <input type="tel" name="phone" id="phone">
+            </div>
+
+            <!-- 3. address -->
+            <div>
+                <label>Contact method(s):</label>
+                <input type="checkbox" name="contact" id="emailCheckbox" value="email">
+            </div>
+            <!-- 4. contact methods -->
         </fieldset>
     </form>
 </body>
