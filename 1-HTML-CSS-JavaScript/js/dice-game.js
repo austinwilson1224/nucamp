@@ -9,19 +9,17 @@ function rollDice() {
             break;
         }
 
-        else if (roll === 4) {
-            if (goldCoins > 0) {
-                goldCoins--;
-                alert("you rolled " + roll + " thats -1 gold coins!");
-                continue;
-            }
-            else continue;
-        }
-
+        // this is the case where roll is either 2 or 3 and you don't lose but don't get anything
         else if (roll < 4) {
             continue;
         }
+        else if (roll === 4 && goldCoins > 0) {
+            goldCoins--;
+            alert("you rolled " + roll + " thats -1 gold coins!");
+        }
 
+
+        // can assume that roll will be 5 or 6 which is winning case 
         else {
             alert("Congratulations, you win " + roll + " gold coins!");
             goldCoins += roll;
