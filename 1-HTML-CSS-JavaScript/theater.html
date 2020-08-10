@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>theater</title>
+</head>
+<body>
+    <h1>Magical myster theater</h1>
+    <button type="button" onclick="buyTicket()">purchace ticket</button>
+    <script>
+        // prompt user for their age
+        const GENERAL_ADMISSION_PRICE = 20;
+        const CHILDREN_AND_SENIOR_PRICE = 10;
+        const MATINEE_DISCOUNT = 3;
+        const age = prompt("what is your age?");
+        // let cost = GENERAL_ADMISSION_PRICE;
+        let cost = getBaseTicketCost(age);
+
+        // check age
+        if ((age <= 12) || (age >= 65)) {
+            cost = CHILDREN_AND_SENIOR_PRICE
+        }
+
+        alert('your ticket will cost $' + cost);
+
+
+
+
+
+        // my code
+        // function price(age) {
+        //     if ((age <= 12) || (age >= 65)) {
+        //         return CHILDREN_AND_SENIOR_PRICE;
+        //     }
+        //     if ((age > 12) && (age < 65)) {
+        //         return GENERAL_ADMISSION_PRICE;
+        //     }
+        // }
+        // const price = price(age);
+
+        function getBaseTicketCost(age) {
+            if((age <= 12) || (age >= 65)) {
+                return CHILDREN_AND_SENIOR_PRICE;
+            }
+            return GENERAL_ADMISSION_PRICE;
+        }
+        function buyTicket() {
+            const isMatinee = prompt("are you attending matinee show?");
+            cost = matineeDiscount(cost, isMatinee);
+            console.log(cost);
+            alert('You bought a ticket for $' + cost);
+
+
+        }
+        function matineeDiscount(cost, isMatinee) {
+            if ((isMatinee == "yes") || isMatinee == 'y') {
+                return cost - MATINEE_DISCOUNT;
+            }
+            return cost;
+        }
+    </script>
+</body>
+</html>

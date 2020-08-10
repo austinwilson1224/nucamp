@@ -15,3 +15,12 @@ function helloWorld(userName) {
     console.log("alert sent");
 
 }
+
+function price(age) {
+    if (age <= 12 || age >= 65) {
+        return 10;
+    }
+    if (age > 10 && age < 65) {
+        return 20;
+    }
+}
