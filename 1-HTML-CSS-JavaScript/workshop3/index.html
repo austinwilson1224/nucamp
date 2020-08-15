@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workshop 3</title>
+</head>
+<body>
+    <h1>Color Guessing Game</h1>
+    <button type="button" onclick="runGame()">start game</button>
+    <script>
+        const colors = ['red', 'white', 'blue', 'green', 'black', 'orange', 'cyan', 'gold', 'gray', 'magenta', 'yellow'];
+        const COLORS_ARRAY = ['blue', 'cyan', 'gold', 'gray', 'green', 'magenta', 'orange', 'red', 'white', 'yellow'];
+        // console.log(colors);
+        colors.sort();
+        // console.log(colors);
+
+
+        /*
+            RUN GAME FUNCTION 
+        */ 
+        function runGame() {
+
+
+            // variables for game 
+            let guess = '';
+            let correct = false;
+            let numTries = 0;
+
+            // declaring values for the game to select as guesses
+            const targetIndex = Math.floor(Math.random() * COLORS_ARRAY.length);
+            const target = COLORS_ARRAY[targetIndex];
+            console.log(target);
+
+            // 
+            do {
+                guess = prompt('I am thinking of one of these colors:\n\n' + COLORS_ARRAY +'What color am I thinking of?\n');
+                if (guess === null) {
+                    return;
+                }
+                correct = checkGuess(guess, target);
+                numTries++;
+            } while (!correct);
+            alert(`good job you\'re right after ${numTries}`);
+        }
+
+
+        /*
+            CHECK GUESS FUNCTION
+        */
+        function checkGuess(guess, target) {
+            let correct = false;
+            if (!COLORS_ARRAY.includes(guess)) {
+                alert('thats not in the array');
+            } else if (COLORS_ARRAY.indexOf(guess) > COLORS_ARRAY.indexOf(target)) {
+                alert('guess is higher alpabeticfaly than the answer');
+            } else if (COLORS_ARRAY.indexOf(guess) < COLORS_ARRAY.indexOf(target)) {
+                alert('guess is lower apliahdlfky than the answer');
+            } else {
+                correct = true;
+                document.body.style.backgroundColor = target;
+
+            }
+            return correct;
+        }
+    </script>
+</body>
+</html>
