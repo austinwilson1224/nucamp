@@ -9,11 +9,8 @@
     <h1>Color Guessing Game</h1>
     <button type="button" onclick="runGame()">start game</button>
     <script>
-        const colors = ['red', 'white', 'blue', 'green', 'black', 'orange', 'cyan', 'gold', 'gray', 'magenta', 'yellow'];
         const COLORS_ARRAY = ['blue', 'cyan', 'gold', 'gray', 'green', 'magenta', 'orange', 'red', 'white', 'yellow'];
-        // console.log(colors);
-        colors.sort();
-        // console.log(colors);
+        COLORS_ARRAY.sort();
 
 
         /*
@@ -29,7 +26,7 @@
 
             // declaring values for the game to select as guesses
             const targetIndex = Math.floor(Math.random() * COLORS_ARRAY.length);
-            const target = COLORS_ARRAY[targetIndex];
+            const target = COLORS_ARRAY[targetIndex].toLowerCase();
             console.log(target);
 
             // 
@@ -38,27 +35,29 @@
                 if (guess === null) {
                     return;
                 }
-                correct = checkGuess(guess, target);
-                numTries++;
+                correct = checkGuess(guess.toLowerCase(), target, numTries++);
+                
+                // alert(`You guessed ${numTries} times `);
             } while (!correct);
             alert(`good job you\'re right after ${numTries}`);
+            document.body.style.backgroundColor = target;
+
         }
 
 
         /*
             CHECK GUESS FUNCTION
         */
-        function checkGuess(guess, target) {
+        function checkGuess(guess, target, numTries) {
             let correct = false;
             if (!COLORS_ARRAY.includes(guess)) {
                 alert('thats not in the array');
             } else if (COLORS_ARRAY.indexOf(guess) > COLORS_ARRAY.indexOf(target)) {
-                alert('guess is higher alpabeticfaly than the answer');
+                alert(`guess is higher alpabeticfaly than the answer\n${numTries} tries`);
             } else if (COLORS_ARRAY.indexOf(guess) < COLORS_ARRAY.indexOf(target)) {
-                alert('guess is lower apliahdlfky than the answer');
+                alert(`guess is lower apliahdlfky than the answer\n${numTries} tries`);
             } else {
                 correct = true;
-                document.body.style.backgroundColor = target;
 
             }
             return correct;
