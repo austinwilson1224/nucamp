@@ -3,12 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>workshop4</title>
     <style>
 
     </style>
 </head>
-<body>
+<body onload="generateFaces()">
     <h1>matching game</h1>
+    <p>Click the button on the left that is not present on the right </p>
+    <div id="left-side"></div>
+    <div id="right-side"></div>
+
+
+
+    <!-- javascript part -->
+    <script>
+        // same as onload="generateFaces()"
+        // document.addEventListener('load', generateFaces); 
+        let numberOfFaces = 5;
+        const theLeftSide = document.querySelector('#left-side');
+        const theRightSide = document.querySelector('#right-side');
+
+        function generateFaces() {
+            for (let i = 0; i < numberOfFaces; i++) {
+                let  face = document.createElement('img');
+                face.src = 'smile.png';
+                let randomTop = Math.floor(Math.random() * 400) + 1;
+                let randomLeft = Math.floor(Math.random() * 400) + 1;
+                face.style.top = randomTop + 'px';
+                face.style.left = randomLeft + 'px';
+                theLeftSide.appendChild(face);
+            }
+            const leftSideImages = theLeftSide.cloneNode(true);
+            leftSideImages.removeChild(leftSideImages.lastChild);
+            theRightSide.appendChild(leftSideImages);
+            theLeftSide.lastChild.addEventListener('click', nextLevel);
+            document.body.addEventListener('click', gameOver);
+
+        }
+
+        function nextLevel() {
+            console.log('test');
+            event.stopPropagation;
+            numberOfFaces += 5;
+            while(theLeftSide.firstChild) {
+                theLeftSide.removeChild(theLeftSide.firstChild);
+            }
+
+            while(theRightSide.firstChild) {
+                theRightSide.removeChild(theRightSide.firstChild);
+            }
+
+            generateFaces();
+        }
+
+        function gameOver() {
+            alert('Game over!');
+            document.body.removeEventListener('click', gameOver);
+            theLeftSide.removeEventListener('click', nextLevel);
+        }
+
+        
+    </script>
 </body>
 </html>
