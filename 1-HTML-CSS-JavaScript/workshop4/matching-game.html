@@ -44,8 +44,9 @@
         }
 
         function nextLevel() {
+            // document.body.removeEventListener('click', gameOver);
             console.log('test');
-            event.stopPropagation;
+            event.stopPropagation();
             numberOfFaces += 5;
             while(theLeftSide.firstChild) {
                 theLeftSide.removeChild(theLeftSide.firstChild);
@@ -60,8 +61,9 @@
 
         function gameOver() {
             alert('Game over!');
+            theLeftSide.lastChild.removeEventListener('click', nextLevel);
             document.body.removeEventListener('click', gameOver);
-            theLeftSide.removeEventListener('click', nextLevel);
+
         }
 
         

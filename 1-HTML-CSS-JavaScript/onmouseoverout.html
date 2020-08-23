@@ -10,13 +10,13 @@
     </style>
 </head>
 <body>
-    <div onmouseover="changeBackground('red');" onmouseout="changeBackground('yellow');" onmousedown="changeBackground('green');" onmouseup="changeBackground('orange');">
+    <div id='1' onmouseover="changeBackground('red');" onmouseout="changeBackground('yellow');" onmousedown="changeBackground('green');" onmouseup="changeBackground('orange');">
         Move your mouse over this text, then move it out
     </div>
 
     <script>
         function changeBackground(newColor) {
-            document.getElementsByTagName('div')[0].style.background = newColor;
+            document.getElementById('1').style.background = newColor;
         }
     </script>
 </body>
