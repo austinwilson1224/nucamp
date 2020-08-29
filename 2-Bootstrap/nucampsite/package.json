@@ -1,7 +1,6 @@
 {
   "name": "nucampsite",
   "version": "1.0.0",
-  "description": "",
   "main": "index.html",
   "scripts": {
     "lite": "lite-server",
@@ -17,5 +16,6 @@
   },
   "devDependencies": {
     "lite-server": "^2.5.4"
-  }
+  },
+  "description": ""
 }
