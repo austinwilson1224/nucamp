@@ -47,3 +47,8 @@ header h2 {
     border-top: none;
     padding: 10px;
 }
+
+/* avoid outlining in the arrordian */
+.btn:focus {
+    box-shadow: none;
+}
