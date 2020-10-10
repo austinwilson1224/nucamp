@@ -26,3 +26,5 @@ let x = 1;
 
 x+='';
 console.log(typeof(x))
+
+x.
