@@ -24,9 +24,9 @@ class Bootcamp {
         if(!test.length) {
             this.students.push(student);
             // console.log(student);
-            console.log(`Registration succeeded for ${student.name} with email ${student.email}\n\n`);
+            console.log(`Registration succeeded for ${student.name} with email ${student.email}\n`);
         }
-        else console.log(`The student ${student.email} is already registered in this course\n\n`);
+        else console.log(`The student ${student.email} is already registered in this course\n`);
     }
 }
 
