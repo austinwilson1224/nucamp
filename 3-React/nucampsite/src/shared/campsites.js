@@ -53,7 +53,7 @@ export const CAMPSITES = [
             {
                 id: 0,
                 rating: 5, 
-                text: "What a magnificent view!",
+                text: "What a magnificent view! No freaking way!!!!!!!",
                 author: "Tinus Lorvaldes",
                 date: "2018-10-25T16:30Z"
             },
