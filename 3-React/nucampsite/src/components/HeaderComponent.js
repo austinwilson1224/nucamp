@@ -3,6 +3,7 @@ import { Nav, NavbarToggler, Collapse, NavItem, Navbar, NavbarBrand, Jumbotron }
 import { NavLink } from 'react-router-dom';
 
 
+
 class Header extends Component {
 
     constructor(props) {
@@ -53,7 +54,7 @@ class Header extends Component {
                                     </NavLink>
                                 </NavItem>
                                 <NavItem>
-                                    <NavLink className="nav-link" to="/aboutus">
+                                    <NavLink className="nav-link" to="/about">
                                         <i className="fa fa-info fa-lg">About</i>
                                     </NavLink>
                                 </NavItem>
