@@ -1,17 +1,16 @@
 import React, { Component } from 'react';
 import { ScrollView } from 'react-native';
-import { Card, Text } from 'react-native-elements';
+import { Card, Text, View } from 'react-native-elements';
 
 function RenderItem(item) {
     if(item) {
         return (
             <Card  
-            featuredTitle={item.name}
-            image={require('./images/react-lake.jpg')}
-        >
-            <Text stye={{margin: 10}}>
-                {item.description}
-            </Text>
+            title={item.name}
+            >
+                <Text stye={{margin: 10}}>
+                    {item.description}
+                </Text>
         </Card>
         )
     }
@@ -26,9 +25,12 @@ class Contact extends Component {
         super(props);
 
         this.state = {
-            test: {
-                name: "test"
+            info: {
+                address: "1 Nucamp Way\nSeattle, WA 98001\nU.S.A.",
+                phone: "1-206-555-1234",
+                email: "campsites@nucamp.co"
             }
+
         }
     }
 
@@ -40,7 +42,17 @@ class Contact extends Component {
     render() {
         return(
             <ScrollView>
-                <RenderItem item={this.state.test} />
+                <Card title="Contact Information" wrapperStyle={{margin:20}} >
+                    <Text style={{margin:10}}>
+                        {this.state.info.address}
+                    </Text>
+                    <Text style={{margin:10}}>
+                        Phone: {this.state.info.phone}
+                        {'\n'}
+                        Email: {this.state.info.email}
+                    </Text>
+                </Card>
+
             </ScrollView>
         )
     }
