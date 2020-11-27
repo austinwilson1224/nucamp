@@ -9,6 +9,16 @@ import { createDrawerNavigator } from 'react-navigation-drawer';
 import Home from './HomeComponent';
 import About from './AboutComponent';
 import Contact from './ContactComponent';
+import { connect } from 'react-redux';
+import { fetchCampsites, fetchComments, fetchPartners, fetchPromotions } from '../redux/ActionCreators';
+
+
+const mapDispatchToProps = {
+    fetchCampsites,
+    fetchComments,
+    fetchPartners,
+    fetchPromotions
+}
 
 const AboutNavigator = createStackNavigator(
     {
@@ -96,12 +106,19 @@ const MainNavigator = createDrawerNavigator(
 const AppNavigator = createAppContainer(MainNavigator);
 
 class Main extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            campsites: CAMPSITES,
-            selectedCampsite: null
-        };
+    // constructor(props) {
+    //     super(props);
+    //     this.state = {
+    //         campsites: CAMPSITES,
+    //         selectedCampsite: null
+    //     };
+    // }
+
+    componentDidMount() {
+        this.props.fetchCampsites();
+        this.props.fetchComments();
+        this.props.fetchPartners();
+        this.props.fetchPromotions();
     }
 
     onCampsiteSelect(campsiteId) {
@@ -133,4 +150,4 @@ class Main extends Component {
 
 
 
-export default Main;
+export default connect(null, mapDispatchToProps)(Main);

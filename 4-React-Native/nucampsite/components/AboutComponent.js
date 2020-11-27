@@ -1,7 +1,16 @@
 import React, { Component } from 'react';
 import { FlatList, ScrollView } from 'react-native';
 import { Card, ListItem, Text } from 'react-native-elements';
-import { PARTNERS } from '../shared/partners';
+// import { PARTNERS } from '../shared/partners';
+import { connect } from 'react-redux';
+import { baseUrl } from '../shared/baseUrl';
+
+
+const mapStateToProps = state => {
+    return {
+        partners: state.partners
+    }
+}
 
 
 function Mission({item}) {
@@ -17,13 +26,7 @@ function Mission({item}) {
 
 class About extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            mission: "We present a curated database of the best campsites in the vast woods and backcountry of the World Wide Web Wilderness. We increase access to adventure for the public while promoting safe and respectful use of resources. The expert wilderness trekkers on our staff personally verify each campsite to make sure that they are up to our standards. We also present a platform for campers to share reviews on campsites they have visited with each other.",
-            partners: PARTNERS
-        }
-    }
+
 
     static navigationOptions = {
         title: "About"
@@ -35,7 +38,7 @@ class About extends Component {
                 <ListItem
                     title={item.name}
                     subtitle={item.description}
-                    leftAvatar={{ source: require('./images/react-lake.jpg')}}
+                    leftAvatar={{ source: {uri:baseUrl + item.image}}}
                 />
             )
         }
@@ -46,7 +49,7 @@ class About extends Component {
                 <Mission item={this.state}/>
                 <Card title="Community partners">
                     <FlatList
-                        data={this.state.partners}
+                        data={this.props.partners.partners}
                         renderItem={renderPartner}
                         keyExtractor={item => item.id.toString()}
                     />
@@ -56,4 +59,4 @@ class About extends Component {
     }
 }
 
-export default About;
+export default connect(mapStateToProps)(About);
