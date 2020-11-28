@@ -11,6 +11,8 @@ import About from './AboutComponent';
 import Contact from './ContactComponent';
 import { connect } from 'react-redux';
 import { fetchCampsites, fetchComments, fetchPartners, fetchPromotions } from '../redux/ActionCreators';
+import { Reservation } from './ReservationComponent';
+import { Icon } from 'react-native-elements';
 
 
 const mapDispatchToProps = {
@@ -40,6 +42,23 @@ const AboutNavigator = createStackNavigator(
 const ContactNavigator = createStackNavigator(
     {
         Contact: { screen: Contact }
+    },
+    {
+        defaultNavigationOptions: {
+            headerStyle: {
+                backgroundColor: "#5637DD"
+            },
+            headerTintColor: "#fff",
+            headerTitleStyle: {
+                color: "#FFF"
+            }
+        }
+    }
+)
+
+const ReservationNavigator = createStackNavigator(
+    {
+        Reservation: { screen: Reservation }
     },
     {
         defaultNavigationOptions: {
@@ -94,6 +113,7 @@ const MainNavigator = createDrawerNavigator(
     {
         Home: { screen: HomeNavigator },
         Directory: { screen: DirectoryNavigator },
+        Reservation: { screen: ReservationNavigator },
         About: { screen: AboutNavigator },
         Contact: { screen: ContactNavigator }
     },

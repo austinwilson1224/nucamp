@@ -4,6 +4,7 @@ import { Card, ListItem, Text } from 'react-native-elements';
 // import { PARTNERS } from '../shared/partners';
 import { connect } from 'react-redux';
 import { baseUrl } from '../shared/baseUrl';
+import Loading from './LoadingComponent';
 
 
 const mapStateToProps = state => {
@@ -13,11 +14,11 @@ const mapStateToProps = state => {
 }
 
 
-function Mission({item}) {
+function Mission() {
     return (
         <Card style={{margin:10}} title="Our mission">
             <Text>
-                {item.mission}
+                We present a curated database of the best campsites in the vast woods and backcountry of the World Wide Web Wilderness. We increase access to adventure for the public while promoting safe and respectful use of resources. The expert wilderness trekkers on our staff personally verify each campsite to make sure that they are up to our standards. We also present a platform for campers to share reviews on campsites they have visited with each other.
             </Text>
         </Card>
     )
@@ -41,6 +42,29 @@ class About extends Component {
                     leftAvatar={{ source: {uri:baseUrl + item.image}}}
                 />
             )
+        }
+
+        if (this.props.partners.isLoading) {
+            return (
+                <ScrollView>
+                    <Mission />
+                    <Card
+                        title='Community Partners'>
+                        <Loading />
+                    </Card>
+                </ScrollView>
+            );
+        }
+        if (this.props.partners.errMess) {
+            return (
+                <ScrollView>
+                    <Mission />
+                    <Card
+                        title='Community Partners'>
+                        <Text>{this.props.partners.errMess}</Text>
+                    </Card>
+                </ScrollView>
+            );
         }
 
 
