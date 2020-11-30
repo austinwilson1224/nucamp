@@ -1,18 +1,22 @@
 import React, { Component } from 'react';
-import Directory from './DirectoryComponent';
-import { CAMPSITES } from '../shared/campsites';
-import CampsiteInfo from './CampsiteInfoComponent';
-import { View, Platform } from 'react-native';
+
+import { View, Platform, StyleSheet} from 'react-native';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createAppContainer } from 'react-navigation';
 import { createDrawerNavigator } from 'react-navigation-drawer';
+import { connect } from 'react-redux';
+import { fetchCampsites, fetchComments, fetchPartners, fetchPromotions } from '../redux/ActionCreators';
+import { Icon } from 'react-native-elements';
+
 import Home from './HomeComponent';
 import About from './AboutComponent';
 import Contact from './ContactComponent';
-import { connect } from 'react-redux';
-import { fetchCampsites, fetchComments, fetchPartners, fetchPromotions } from '../redux/ActionCreators';
-import { Reservation } from './ReservationComponent';
-import { Icon } from 'react-native-elements';
+import Directory from './DirectoryComponent';
+import CampsiteInfo from './CampsiteInfoComponent';
+import Reservation  from './ReservationComponent';
+
+
+
 
 
 const mapDispatchToProps = {
@@ -56,22 +60,46 @@ const ContactNavigator = createStackNavigator(
     }
 )
 
+// const ReservationNavigator = createStackNavigator(
+//     {
+//         Reservation: { screen: Reservation }
+//     },
+//     {
+//         defaultNavigationOptions: {
+//             headerStyle: {
+//                 backgroundColor: "#5637DD"
+//             },
+//             headerTintColor: "#fff",
+//             headerTitleStyle: {
+//                 color: "#FFF"
+//             }
+//         }
+//     }
+// )
+
+
 const ReservationNavigator = createStackNavigator(
     {
         Reservation: { screen: Reservation }
     },
     {
-        defaultNavigationOptions: {
+        defaultNavigationOptions: ({navigation}) => ({
             headerStyle: {
-                backgroundColor: "#5637DD"
+                backgroundColor: '#5637DD'
             },
-            headerTintColor: "#fff",
+            headerTintColor: '#fff',
             headerTitleStyle: {
-                color: "#FFF"
-            }
-        }
+                color: '#fff'
+            },
+            headerLeft: <Icon
+                name='tree'
+                type='font-awesome'
+                iconStyle={styles.stackIcon}
+                onPress={() => navigation.toggleDrawer()}
+            />
+        })
     }
-)
+);
 
 const DirectoryNavigator = createStackNavigator(
     {
@@ -113,7 +141,21 @@ const MainNavigator = createDrawerNavigator(
     {
         Home: { screen: HomeNavigator },
         Directory: { screen: DirectoryNavigator },
-        Reservation: { screen: ReservationNavigator },
+        // Reservation: { screen: ReservationNavigator },
+        Reservation: {
+            screen: ReservationNavigator,
+            navigationOptions: {
+                drawerLabel: 'Reserve Campsite',
+                drawerIcon: ({tintColor}) => (
+                    <Icon
+                        name='tree'
+                        type='font-awesome'
+                        size={24}
+                        color={tintColor}
+                    />
+                )
+            }
+        },
         About: { screen: AboutNavigator },
         Contact: { screen: ContactNavigator }
     },
@@ -167,6 +209,35 @@ class Main extends Component {
         // <Directory campsites={this.state.campsites} />;
     }
 }
+
+const styles = StyleSheet.create({
+    container: {
+      flex: 1
+    },
+    drawerHeader: {
+      backgroundColor: '#5637DD',
+      height: 140,
+      alignItems: 'center',
+      justifyContent: 'center',
+      flex: 1,
+      flexDirection: 'row'
+    },
+    drawerHeaderText: {
+      color: '#fff',
+      fontSize: 24,
+      fontWeight: 'bold'
+    },
+    drawerImage: {
+      margin: 10,
+      height: 60,
+      width: 60
+    },
+    stackIcon: {
+      marginLeft: 10,
+      color: '#fff',
+      fontSize: 24
+    }
+  });
 
 
 
