@@ -6,7 +6,7 @@ import { Card, Icon, Rating, Input } from 'react-native-elements';
 
 import { connect } from 'react-redux';
 import { baseUrl } from '../shared/baseUrl';
-import { postFavorite } from '../redux/ActionCreators';
+import { postFavorite, postComment } from '../redux/ActionCreators';
 
 
 const mapStateToProps = state => {
@@ -18,7 +18,8 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
-    postFavorite: campsiteId => (postFavorite(campsiteId))
+    postFavorite: campsiteId => (postFavorite(campsiteId)),
+    postComment: (campsiteId, rating, author, text) => (postComment(campsiteId, rating,author, text))
 };
 
 
@@ -28,6 +29,12 @@ function RenderComments({comments}) {
         return (
             <View style={{margin:10}}>
                 <Text style={{fontSize:14}}>{item.text}</Text>
+                <Rating 
+                    startingValue={item.rating}
+                    imageSize='10'
+                    style={{alignItems:'flex-start', paddingRight: '5%'}}
+                    readonly
+                ></Rating>
                 <Text style={{fontSize:12}}>{item.rating} stars</Text>
                 <Text style={{fontSize:12}}>[`-- ${item.author}, ${item.date}`</Text>
             </View>
@@ -106,7 +113,8 @@ class CampsiteInfo extends Component {
     }
 
     handleComment(campsiteId) {
-        console.log(JSON.stringify(this.state));
+        // console.log(JSON.stringify(this.state));
+        postComment(...state, campsiteId);
         this.toggleModal();
     }
 
@@ -148,7 +156,7 @@ class CampsiteInfo extends Component {
                             startingValue={this.state.rating}
                             imageSize='40'
                             onFinishRating={rating => this.setState({rating: rating})}
-                            style={{paddingVertical: 20}}
+                            style={{paddingVertical: 10}}
                         >
 
                         </Rating>
@@ -162,10 +170,15 @@ class CampsiteInfo extends Component {
                             leftIcon={{ type:'font-awesome', name: 'user-o'}}
                             leftIconContainerStyle={{paddingRight: 10}}
                         ></Input>
-                        <View
-                            
-                        >
-                            <Button></Button>
+                        <View style={{margin: 10}}>
+                            <Button
+                                title='Submit'
+                                color='#5637DD'
+                                onPress={() => {
+                                    this.handleComment();
+                                    this.resetForm();
+                                }}
+                            ></Button>
 
                         </View>
                         <View style={{margin: 10}}>
@@ -174,6 +187,7 @@ class CampsiteInfo extends Component {
                                 color='#808080'
                                 onPress={() => {
                                     this.toggleModal();
+                                    this.resetForm();
                                 }}
                             ></Button>
                         </View>
