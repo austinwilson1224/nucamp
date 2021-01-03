@@ -4,12 +4,16 @@ solveRect = (l, w) => {
     console.log(`solving for rectangle with dimensions ${l} and ${w}`);
 
 
-    if(l <= 0 || w <= 0) {
-        console.log(`Rectangle dimensions must be greater than zero, ${l} and ${w} were given.`)
-    } else {
-        console.log(`area of rectangle is ${rect.area(l,w)}`);
-        console.log(`perimeter of rectangle is ${rect.perimeter(l,w)}`);
-    }
+    rect(l, w, (err, rectangle) => {
+        if (err) {
+            console.log('Error', err.message);
+        } else {
+            console.log(`area of rectangle with dimensions ${l} and ${w} is ${rectangle.area()}`);
+            console.log(`perimeter of rectangle with dimensions ${l} and ${w} is ${rectangle.perimeter()}`);
+        }
+
+    });
+    console.log('This statement is logged after the call to rect()');
 }
 
 
@@ -21,3 +25,24 @@ solveRect(3, 5);
 solveRect(0, 5);
 
 solveRect(5, -3);
+
+
+console.log("test");
+const outerFxn = () => {
+    const x = 5;
+
+    const innerFxn = () => {console.log(x)}
+    innerFxn();
+}
+// outerFxn();
+
+
+const outerFxn2 = () => {
+    const x = 5;
+    const innerFxn = () => console.log(x);
+    return innerFxn;
+}
+
+const closureTest = outerFxn();
+
+console.dir(closureTest)
