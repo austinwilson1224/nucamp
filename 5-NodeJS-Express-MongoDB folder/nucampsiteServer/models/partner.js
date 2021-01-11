@@ -23,6 +23,6 @@ const partnerSchema = Schema({
     timestamps: true
 });
 
-const Partner = mongoose.Model('Partner', partnerSchema);
+const Partner = mongoose.model('Partner', partnerSchema);
 
 module.exports = Partner;
